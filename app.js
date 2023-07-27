@@ -19,8 +19,10 @@ mongoose.connect(mongourl,{
 },()=>{
     console.log("Connected to database");
 });
-
-app.use(cors());
+const corsOptions = {
+    methods: ['POST', 'DELETE', 'GET', 'PUT'],
+};
+app.use(cors(corsOptions));
 app.use(morgan("dev"));
 app.use(bodyParser.json());
 
