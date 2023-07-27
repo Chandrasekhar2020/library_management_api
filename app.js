@@ -20,7 +20,7 @@ mongoose.connect(mongourl,{
     console.log("Connected to database");
 });
 const corsOptions = {
-    methods: ['POST', 'DELETE', 'GET', 'PUT'],
+    methods: ['POST', 'DELETE', 'GET', 'PUT','OPTIONS'],
 };
 app.use(cors(corsOptions));
 app.use(morgan("dev"));
