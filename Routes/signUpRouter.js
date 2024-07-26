@@ -67,7 +67,7 @@ router.post("/user/new",(req,res) =>{
             const text = String(new Date().getMilliseconds()) + req.body.gmail;
             const token = sha1(text);
             
-            const url = `${process.env.FRONTEND_URL}signup/user/verify/${token}`;
+            const url = `${process.env.BACKEND_URL}signup/user/verify/${token}`;
             UserTemp.findOne({reg_no:req.body.reg_no}).then((x)=>{
               if(x!==null){
                 x.name = req.body.name;
@@ -111,7 +111,7 @@ router.post("/admin/new",(req,res)=>{
             if(resp===null){
               const text = String(new Date().getMilliseconds()) + req.body.gmail;
               const token = sha1(text);
-              const url = `${process.env.FRONTEND_URL}/signup/admin/verify/${token}`;
+              const url = `${process.env.BACKEND_URL}/signup/admin/verify/${token}`;
               AdminTemp.findOne({gmail:req.body.gmail}).then((x)=>{
                if(x!==null){
                 x.name = req.body.name;
