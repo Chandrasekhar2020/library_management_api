@@ -42,7 +42,7 @@ router.post("/admin/new", (req,res)=>{
             else{
               const text = String(new Date().getMilliseconds()) + req.body.gmail;
               const token = sha1(text);
-              const url = `http://localhost:${process.env.REACT_PORT}/forgot/verify/${token}`;
+              const url = `${process.env.FRONTEND_URL}forgot/verify/${token}`;
               ForgotSchema.findOne({gmail:req.body.gmail,admin:1}).then((x)=>{
                if(x!==null){
                 x.token = token;
@@ -78,7 +78,7 @@ router.post("/user/new", (req,res)=>{
             else{
               const text = String(new Date().getMilliseconds()) + req.body.gmail;
               const token = sha1(text);
-              const url = `http://localhost:${process.env.REACT_PORT}/forgot/verify/${token}`;
+              const url = `${process.env.FRONTEND_URL}forgot/verify/${token}`;
               ForgotSchema.findOne({gmail:req.body.gmail,admin:0}).then((x)=>{
                if(x!==null){
                 x.token = token;
